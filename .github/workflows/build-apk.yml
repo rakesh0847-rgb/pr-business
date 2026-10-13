@@ -30,8 +30,9 @@ jobs:
       - name: Enable AndroidX
         run: echo "android.useAndroidX=true" >> PRBusiness/gradle.properties
 
-      - name: Align Java target
-        run: sed -i 's/JavaVersion.VERSION_1_8/JavaVersion.VERSION_17/g' PRBusiness/app/build.gradle
+      - name: Find Gradle files
+        run: |
+          find . -name build.gradle -o -name build.gradle.kts -o -name gradle.properties
         
       - name: Build APK
         run: gradle -p PRBusiness assembleDebug
