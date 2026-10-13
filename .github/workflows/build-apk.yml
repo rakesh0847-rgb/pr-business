@@ -27,7 +27,8 @@ jobs:
       - name: Extract project
         run: unzip -q PRBusiness_Android_Prototype.zip
 
-      - name: Build APK
+      - name:Enable AndroidX
+        run: echo "android.useAndroidX=true" >> PRBusiness/gradle.properties Build APK
         run: gradle -p PRBusiness assembleDebug
 
       - name: Upload APK
