@@ -31,8 +31,7 @@ jobs:
         run: echo "android.useAndroidX=true" >> PRBusiness/gradle.properties
 
       - name: Align Java target
-        run: |
-        sed -i 's/JavaVersion.VERSION_1_8/JavaVersion.VERSION_17/g' PRBusiness/app/build.gradle
+        run: sed -i 's/JavaVersion.VERSION_1_8/JavaVersion.VERSION_17/g' PRBusiness/app/build.gradle
         
       - name: Build APK
         run: gradle -p PRBusiness assembleDebug
