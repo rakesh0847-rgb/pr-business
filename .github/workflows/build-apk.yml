@@ -32,7 +32,7 @@ jobs:
 
       - name: Find Gradle files
         run: |
-          find . -name build.gradle -o -name build.gradle.kts -o -name gradle.properties
+          find . \( -name "build.gradle" -o -name "build.gradle.kts" -o -name "gradle.properties" \) -print
         
       - name: Build APK
         run: gradle -p PRBusiness assembleDebug
