@@ -33,7 +33,11 @@ jobs:
       - name: Find Gradle files
         run: |
           find . \( -name "build.gradle" -o -name "build.gradle.kts" -o -name "gradle.properties" \) -print
-        
+       
+      - name: Show Java and Kotlin targets
+        run: |
+          grep -R -n -E 'VERSION_1_8|VERSION_17|jvmTarget|JvmTarget' PRBusiness --include='*.gradle' --include='*.gradle.kts' || true
+      
       - name: Build APK
         run: gradle -p PRBusiness assembleDebug
 
