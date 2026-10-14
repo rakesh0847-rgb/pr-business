@@ -22,6 +22,7 @@ jobs:
       - name: Create fresh Flutter project
         run: |
           flutter create --platforms=android --org com.prbusiness pr_business
+          cp lib/main.dart pr_business/lib/main.dart
           cd pr_business
           flutter pub get
 
