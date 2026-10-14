@@ -22,10 +22,10 @@ jobs:
       - name: Create fresh Flutter project
         run: |
           flutter create --platforms=android --org com.prbusiness pr_business
-          cp "$GITHUB_WORKSPACE/lib/main.dart" pr_business/lib/main.dart
+          cp "$GITHUB_WORKSPACE/lib/main.dart" "$GITHUB_WORKSPACE/pr_business/lib/main.dart"
           cd pr_business
           flutter pub get
-
+      
       - name: Build APK
         run: |
           cd pr_business
