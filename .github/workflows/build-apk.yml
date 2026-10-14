@@ -37,6 +37,13 @@ jobs:
       - name: Show Java and Kotlin targets
         run: |
           grep -R -n -E 'VERSION_1_8|VERSION_17|jvmTarget|JvmTarget' PRBusiness --include='*.gradle' --include='*.gradle.kts' || true
+     
+      - name: Fix Java and Kotlin JVM targets
+        run: |
+          find PRBusiness -type f \( -name "build.gradle" -o -name "build.gradle.kts" \) -exec sed -i \
+            -e 's/JavaVersion.VERSION_1_8/JavaVersion.VERSION_17/g' \
+            -e 's/jvmTarget = "1.8"/jvmTarget = "17"/g' \
+            -e "s/jvmTarget = '1.8'/jvmTarget = '17'/g" {} +
       
       - name: Build APK
         run: gradle -p PRBusiness assembleDebug
